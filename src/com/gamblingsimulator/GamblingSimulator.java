@@ -10,7 +10,7 @@ public class GamblingSimulator {
 
 	public static void main(String[] args) {
 		System.out.println("Welcome to Gambling Simulation");
-		twentyDaysPlays();
+		monthlyPlays();
 	}
 
 	/*
@@ -39,23 +39,28 @@ public class GamblingSimulator {
 /*
  *method for twenty day play and calculation of total profit or loss 
  */
-	public static void twentyDaysPlays() {
+	public static void monthlyPlays() {
+		int winDays = 0;
+		int lossDays = 0;
 		int dailyProfit = 0;
 		int totalProfit = 0;
 		System.out.println("Enter daily stake");
 		Scanner scanner = new Scanner(System.in);
 		int num = scanner.nextInt();
 		scanner.close();
-		for (int days = 1; days <= 20; days++) {
+		for (int days = 1; days <= 30; days++) {
 			dailyStake = num;
 			dailyPlays();
 			dailyProfit = dailyStake - 100;
 			totalProfit += dailyProfit;
 			System.out.println("Profit for day " + days + " is: " + dailyProfit + " and total profit till date is: "
 					+ totalProfit);
-
+			if(dailyProfit>0) {
+				winDays++;
+			}
+			else {lossDays++;}
 		}
 
-		System.out.println("Total profit of last 20 days: " + totalProfit);
+		System.out.println("You have won on "+winDays+" days and lost on "+lossDays+". Total profit of last 20 days: " + totalProfit);
 	}
 }
